@@ -3,39 +3,39 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    --background: 220 15% 5%;
+    --background: 220 15% 3%;
     --foreground: 0 0% 98%;
 
-    --card: 220 15% 8%;
+    --card: 220 15% 6%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 220 15% 8%;
+    --popover: 220 15% 6%;
     --popover-foreground: 0 0% 95%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 220 15% 5%;
+    --primary-foreground: 220 15% 3%;
 
-    --secondary: 220 15% 12%;
+    --secondary: 220 15% 10%;
     --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 15% 12%;
+    --muted: 220 15% 10%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 220 15% 15%;
+    --accent: 220 15% 12%;
     --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
+    --border: 220 15% 15%;
+    --input: 220 15% 12%;
     --ring: 0 0% 95%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -46,6 +46,8 @@
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
   }
 
   html {
@@ -55,41 +57,58 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent;
+  }
+  
+  .premium-gradient {
+    @apply bg-gradient-to-br from-white/20 via-white/5 to-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
   }
   
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+    @apply transition-all duration-500 hover:scale-105 hover:shadow-2xl;
   }
   
   .fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: premiumFadeIn 1s ease-out forwards;
   }
   
   .slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+    animation: premiumSlideUp 1s ease-out forwards;
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 
+                0 0 0 1px rgba(255, 255, 255, 0.1);
   }
 }
 
-@keyframes fadeIn {
+@keyframes premiumFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-@keyframes slideUp {
+@keyframes premiumSlideUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(50px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -103,5 +122,23 @@
 }
 
 .scroll-animation {
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
