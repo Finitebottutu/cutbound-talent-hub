@@ -8,30 +8,48 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-background/90 via-background/80 to-background/70 backdrop-blur-xl border-b border-white/10">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent shimmer"></div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/">
-              <h1 className="text-xl font-bold gradient-text">Cutbound</h1>
+            <Link to="/" className="group">
+              <h1 className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
+                Cutbound
+              </h1>
             </Link>
           </div>
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#services" className="text-foreground hover:text-white transition-colors">Services</a>
-              <a href="#how-it-works" className="text-foreground hover:text-white transition-colors">How it Works</a>
-              <a href="#testimonials" className="text-foreground hover:text-white transition-colors">Testimonials</a>
-              <Link to="/referral" className="text-foreground hover:text-white transition-colors">Referral Program</Link>
-              <a href="#faq" className="text-foreground hover:text-white transition-colors">FAQ</a>
+              <a href="#services" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                Services
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#how-it-works" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                How it Works
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#testimonials" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                Testimonials
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <Link to="/referral" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                Referral Program
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <a href="#faq" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                FAQ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+              </a>
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-foreground hover:text-white">
+            <Button variant="ghost" className="premium-button-outline text-foreground hover:text-black">
               For Freelancers
             </Button>
-            <Button className="bg-white text-black hover:bg-gray-200">
+            <Button className="premium-button">
               Hire Talent
             </Button>
           </div>
@@ -39,7 +57,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-white"
+              className="text-foreground hover:text-white transition-all duration-300 hover:scale-110"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -48,18 +66,18 @@ const Navigation = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
+        <div className="md:hidden glass-effect border-b border-white/10 fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <a href="#services" className="block px-3 py-2 text-foreground hover:text-white">Services</a>
-            <a href="#how-it-works" className="block px-3 py-2 text-foreground hover:text-white">How it Works</a>
-            <a href="#testimonials" className="block px-3 py-2 text-foreground hover:text-white">Testimonials</a>
-            <Link to="/referral" className="block px-3 py-2 text-foreground hover:text-white">Referral Program</Link>
-            <a href="#faq" className="block px-3 py-2 text-foreground hover:text-white">FAQ</a>
+            <a href="#services" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Services</a>
+            <a href="#how-it-works" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">How it Works</a>
+            <a href="#testimonials" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Testimonials</a>
+            <Link to="/referral" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Referral Program</Link>
+            <a href="#faq" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">FAQ</a>
             <div className="pt-4 pb-2 space-y-2">
-              <Button variant="ghost" className="w-full text-foreground hover:text-white">
+              <Button variant="ghost" className="w-full premium-button-outline text-foreground hover:text-black">
                 For Freelancers
               </Button>
-              <Button className="w-full bg-white text-black hover:bg-gray-200">
+              <Button className="w-full premium-button">
                 Hire Talent
               </Button>
             </div>

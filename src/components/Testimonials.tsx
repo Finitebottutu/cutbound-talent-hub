@@ -25,9 +25,12 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="testimonials" className="py-20 px-6 lg:px-8 relative">
+      <div className="absolute inset-0 section-gradient"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             Loved by Startups & Enterprises
           </h2>
@@ -38,26 +41,26 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card border-border hover:border-gray-600 transition-all duration-300 hover-scale">
+            <Card key={index} className="card-premium slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
               <CardContent className="p-8">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={20} className="text-yellow-400 fill-current" />
+                    <Star key={i} size={20} className="text-yellow-400 fill-current hover:scale-110 transition-transform duration-300" />
                   ))}
                 </div>
                 
-                <p className="text-gray-300 leading-relaxed mb-6 text-lg">
+                <p className="text-gray-300 leading-relaxed mb-6 text-lg hover:text-white transition-colors duration-500">
                   "{testimonial.content}"
                 </p>
                 
-                <div className="border-t border-border pt-6">
-                  <div className="font-semibold text-white text-lg">
+                <div className="border-t border-white/10 pt-6">
+                  <div className="font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent text-lg">
                     {testimonial.name}
                   </div>
-                  <div className="text-gray-400 mb-2">
+                  <div className="text-gray-400 mb-2 hover:text-gray-300 transition-colors duration-300">
                     {testimonial.role}
                   </div>
-                  <div className="text-sm text-gray-500 bg-gray-800 rounded-full px-3 py-1 inline-block">
+                  <div className="text-sm text-gray-500 bg-gradient-to-r from-gray-800 to-gray-700 rounded-full px-3 py-1 inline-block border border-white/10">
                     {testimonial.category}
                   </div>
                 </div>

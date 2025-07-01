@@ -34,9 +34,11 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="faq" className="py-20 px-6 lg:px-8 section-gradient relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             Frequently Asked Questions
           </h2>
@@ -47,26 +49,26 @@ const FAQ = () => {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <Card key={index} className="bg-card border-border">
+            <Card key={index} className="card-premium slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardContent className="p-0">
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-accent transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gradient-to-r hover:from-white/5 hover:to-transparent transition-all duration-300"
                 >
-                  <span className="text-lg font-medium text-white pr-4">
+                  <span className="text-lg font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent pr-4">
                     {faq.question}
                   </span>
                   <ChevronDown
                     size={24}
-                    className={`text-gray-400 transition-transform ${
+                    className={`text-gray-400 transition-all duration-500 hover:text-white ${
                       openIndex === index ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 
                 {openIndex === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-300 leading-relaxed">
+                  <div className="px-6 pb-6 fade-in">
+                    <p className="text-gray-300 leading-relaxed hover:text-white transition-colors duration-300">
                       {faq.answer}
                     </p>
                   </div>

@@ -47,8 +47,9 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="py-20 px-6 lg:px-8 section-gradient relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             Your Team, Your Way
@@ -63,22 +64,24 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="bg-card border-border hover:border-gray-600 transition-all duration-300 hover-scale">
+              <Card key={index} className="card-premium slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="bg-white/10 p-3 rounded-lg mr-4">
+                    <div className="bg-gradient-to-br from-white/20 to-white/10 p-3 rounded-lg mr-4 glow">
                       <Icon size={32} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                      <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
+                        {service.title}
+                      </h3>
                       <p className="text-gray-400">{service.description}</p>
                     </div>
                   </div>
                   
                   <ul className="space-y-4 mb-8">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="text-gray-300 leading-relaxed">
-                        <span className="text-white font-medium">
+                      <li key={featureIndex} className="text-gray-300 leading-relaxed hover:text-white transition-colors duration-300">
+                        <span className="text-white font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                           {feature.split(':')[0]}:
                         </span>
                         {feature.split(':')[1]}
@@ -86,7 +89,7 @@ const Services = () => {
                     ))}
                   </ul>
                   
-                  <Button className="w-full bg-white text-black hover:bg-gray-200 font-medium">
+                  <Button className="w-full premium-button font-medium">
                     {service.cta}
                   </Button>
                 </CardContent>

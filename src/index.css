@@ -46,8 +46,11 @@
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
-    background: radial-gradient(ellipse at top, rgba(255,255,255,0.05) 0%, transparent 50%),
-                linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+    background: 
+      radial-gradient(ellipse 80% 50% at top, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 50% at bottom, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%);
+    background-attachment: fixed;
   }
 
   html {
@@ -65,32 +68,68 @@
   }
   
   .glass-effect {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl border border-white/20;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3), 
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   }
   
   .hover-scale {
-    @apply transition-all duration-500 hover:scale-105 hover:shadow-2xl;
+    @apply transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-white/10;
   }
   
   .fade-in {
-    animation: premiumFadeIn 1s ease-out forwards;
+    animation: premiumFadeIn 1.2s ease-out forwards;
   }
   
   .slide-up {
     animation: premiumSlideUp 1s ease-out forwards;
   }
   
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .glow {
+    animation: glow 4s ease-in-out infinite alternate;
+  }
+  
   .premium-shadow {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.8), 
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 4px 16px rgba(255, 255, 255, 0.05);
+  }
+  
+  .premium-button {
+    @apply bg-gradient-to-r from-white via-gray-100 to-white text-black hover:from-gray-100 hover:to-gray-200 
+           transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/20
+           border border-white/20 backdrop-blur-sm;
+  }
+  
+  .premium-button-outline {
+    @apply bg-gradient-to-r from-transparent via-white/5 to-transparent 
+           border-2 border-white/30 text-white hover:bg-gradient-to-r hover:from-white/10 hover:to-white/10
+           hover:border-white/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10
+           backdrop-blur-sm;
+  }
+  
+  .section-gradient {
+    @apply bg-gradient-to-b from-background via-background/80 to-card/20;
+  }
+  
+  .card-premium {
+    @apply glass-effect hover:bg-gradient-to-br hover:from-white/15 hover:via-white/8 hover:to-white/5
+           hover:border-white/30 transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-white/10;
   }
 }
 
 @keyframes premiumFadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
-    filter: blur(4px);
+    transform: translateY(40px);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
@@ -102,13 +141,31 @@
 @keyframes premiumSlideUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
-    filter: blur(4px);
+    transform: translateY(60px);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -122,23 +179,39 @@
 }
 
 .scroll-animation {
-  animation: scroll 25s linear infinite;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
 }
 
 /* Premium scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
 }
