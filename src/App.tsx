@@ -41,10 +41,59 @@ import PHPDevelopers from "./pages/hire/PHPDevelopers";
 import LaravelDevelopers from "./pages/hire/LaravelDevelopers";
 import DotNetDevelopers from "./pages/hire/DotNetDevelopers";
 import ASPNetDevelopers from "./pages/hire/ASPNetDevelopers";
-import iOSDevelopers from "./pages/hire/iOSDevelopers";
+import IOSDevelopers from "./pages/hire/iOSDevelopers";
 import FlutterDevelopers from "./pages/hire/FlutterDevelopers";
 import ReactNativeDevelopers from "./pages/hire/ReactNativeDevelopers";
 import AndroidDevelopers from "./pages/hire/AndroidDevelopers";
+
+// Service pages - UI/UX Design
+import UIUXWebApplication from "./pages/services/ui-ux/UIUXWebApplication";
+import UIUXMobileApplication from "./pages/services/ui-ux/UIUXMobileApplication";
+import UIUXCustomSoftware from "./pages/services/ui-ux/UIUXCustomSoftware";
+
+// Service pages - Website Development
+import EcommerceStoreDevelopment from "./pages/services/website/EcommerceStoreDevelopment";
+import LandingPageDevelopment from "./pages/services/website/LandingPageDevelopment";
+import BlogDevelopment from "./pages/services/website/BlogDevelopment";
+import CMSDevelopment from "./pages/services/website/CMSDevelopment";
+import SaaSApplicationDevelopment from "./pages/services/website/SaaSApplicationDevelopment";
+import MarketplaceDevelopment from "./pages/services/website/MarketplaceDevelopment";
+import CorporateWebsiteDevelopment from "./pages/services/website/CorporateWebsiteDevelopment";
+import CustomWebApplicationDevelopment from "./pages/services/website/CustomWebApplicationDevelopment";
+
+// Service pages - Mobile App
+import AndroidApplicationDevelopment from "./pages/services/mobile/AndroidApplicationDevelopment";
+import IOSApplicationDevelopment from "./pages/services/mobile/IOSApplicationDevelopment";
+import CrossPlatformMobileDevelopment from "./pages/services/mobile/CrossPlatformMobileDevelopment";
+
+// Service pages - Digital Marketing
+import SEOCompany from "./pages/services/marketing/SEOCompany";
+import SEMCompany from "./pages/services/marketing/SEMCompany";
+import SocialMediaMarketing from "./pages/services/marketing/SocialMediaMarketing";
+import ContentMarketing from "./pages/services/marketing/ContentMarketing";
+import EmailMarketing from "./pages/services/marketing/EmailMarketing";
+import AffiliateMarketing from "./pages/services/marketing/AffiliateMarketing";
+import PPCAds from "./pages/services/marketing/PPCAds";
+import InfluencerMarketing from "./pages/services/marketing/InfluencerMarketing";
+
+// Service pages - Content Writing
+import BlogWritingServices from "./pages/services/writing/BlogWritingServices";
+import CopywritingServices from "./pages/services/writing/CopywritingServices";
+import TechnicalWritingServices from "./pages/services/writing/TechnicalWritingServices";
+import GhostwritingServices from "./pages/services/writing/GhostwritingServices";
+import CreativeWritingServices from "./pages/services/writing/CreativeWritingServices";
+import SEOWritingServices from "./pages/services/writing/SEOWritingServices";
+import ProductDescriptionWriting from "./pages/services/writing/ProductDescriptionWriting";
+import PressReleaseWriting from "./pages/services/writing/PressReleaseWriting";
+import AcademicWritingServices from "./pages/services/writing/AcademicWritingServices";
+
+// Service pages - Custom Software
+import EnterpriseSoftwareDevelopment from "./pages/services/software/EnterpriseSoftwareDevelopment";
+import SaaSToolDevelopment from "./pages/services/software/SaaSToolDevelopment";
+import CRMDevelopment from "./pages/services/software/CRMDevelopment";
+import ERPDevelopment from "./pages/services/software/ERPDevelopment";
+import DesktopApplicationDevelopment from "./pages/services/software/DesktopApplicationDevelopment";
+import CloudBasedSoftwareDevelopment from "./pages/services/software/CloudBasedSoftwareDevelopment";
 
 const queryClient = new QueryClient();
 
@@ -91,10 +140,59 @@ const App = () => (
           <Route path="/hire/laravel-developers" element={<LaravelDevelopers />} />
           <Route path="/hire/dotnet-developers" element={<DotNetDevelopers />} />
           <Route path="/hire/aspnet-developers" element={<ASPNetDevelopers />} />
-          <Route path="/hire/ios-developers" element={<iOSDevelopers />} />
+          <Route path="/hire/ios-developers" element={<IOSDevelopers />} />
           <Route path="/hire/flutter-developers" element={<FlutterDevelopers />} />
           <Route path="/hire/react-native-developers" element={<ReactNativeDevelopers />} />
           <Route path="/hire/android-developers" element={<AndroidDevelopers />} />
+          
+          {/* Service Routes - UI/UX Design */}
+          <Route path="/services/ui-ux/web-application" element={<UIUXWebApplication />} />
+          <Route path="/services/ui-ux/mobile-application" element={<UIUXMobileApplication />} />
+          <Route path="/services/ui-ux/custom-software" element={<UIUXCustomSoftware />} />
+          
+          {/* Service Routes - Website Development */}
+          <Route path="/services/website/ecommerce-store-development" element={<EcommerceStoreDevelopment />} />
+          <Route path="/services/website/landing-page-development" element={<LandingPageDevelopment />} />
+          <Route path="/services/website/blog-development" element={<BlogDevelopment />} />
+          <Route path="/services/website/cms-development" element={<CMSDevelopment />} />
+          <Route path="/services/website/saas-application-development" element={<SaaSApplicationDevelopment />} />
+          <Route path="/services/website/marketplace-development" element={<MarketplaceDevelopment />} />
+          <Route path="/services/website/corporate-website-development" element={<CorporateWebsiteDevelopment />} />
+          <Route path="/services/website/custom-web-application-development" element={<CustomWebApplicationDevelopment />} />
+          
+          {/* Service Routes - Mobile App */}
+          <Route path="/services/mobile/android-application-development" element={<AndroidApplicationDevelopment />} />
+          <Route path="/services/mobile/ios-application-development" element={<IOSApplicationDevelopment />} />
+          <Route path="/services/mobile/cross-platform-mobile-development" element={<CrossPlatformMobileDevelopment />} />
+          
+          {/* Service Routes - Digital Marketing */}
+          <Route path="/services/marketing/seo-company" element={<SEOCompany />} />
+          <Route path="/services/marketing/sem-company" element={<SEMCompany />} />
+          <Route path="/services/marketing/social-media-marketing" element={<SocialMediaMarketing />} />
+          <Route path="/services/marketing/content-marketing" element={<ContentMarketing />} />
+          <Route path="/services/marketing/email-marketing" element={<EmailMarketing />} />
+          <Route path="/services/marketing/affiliate-marketing" element={<AffiliateMarketing />} />
+          <Route path="/services/marketing/ppc-ads" element={<PPCAds />} />
+          <Route path="/services/marketing/influencer-marketing" element={<InfluencerMarketing />} />
+          
+          {/* Service Routes - Content Writing */}
+          <Route path="/services/writing/blog-writing-services" element={<BlogWritingServices />} />
+          <Route path="/services/writing/copywriting-services" element={<CopywritingServices />} />
+          <Route path="/services/writing/technical-writing-services" element={<TechnicalWritingServices />} />
+          <Route path="/services/writing/ghostwriting-services" element={<GhostwritingServices />} />
+          <Route path="/services/writing/creative-writing-services" element={<CreativeWritingServices />} />
+          <Route path="/services/writing/seo-writing-services" element={<SEOWritingServices />} />
+          <Route path="/services/writing/product-description-writing" element={<ProductDescriptionWriting />} />
+          <Route path="/services/writing/press-release-writing" element={<PressReleaseWriting />} />
+          <Route path="/services/writing/academic-writing-services" element={<AcademicWritingServices />} />
+          
+          {/* Service Routes - Custom Software */}
+          <Route path="/services/software/enterprise-software-development" element={<EnterpriseSoftwareDevelopment />} />
+          <Route path="/services/software/saas-tool-development" element={<SaaSToolDevelopment />} />
+          <Route path="/services/software/crm-development" element={<CRMDevelopment />} />
+          <Route path="/services/software/erp-development" element={<ERPDevelopment />} />
+          <Route path="/services/software/desktop-application-development" element={<DesktopApplicationDevelopment />} />
+          <Route path="/services/software/cloud-based-software-development" element={<CloudBasedSoftwareDevelopment />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
