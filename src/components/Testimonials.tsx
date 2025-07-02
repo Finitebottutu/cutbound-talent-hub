@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 
@@ -25,10 +24,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 px-6 lg:px-8 relative">
-      <div className="absolute inset-0 section-gradient"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-      
+    <section id="testimonials" className="py-20 px-6 lg:px-8 relative section-premium">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
@@ -41,26 +37,26 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="card-premium slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+            <Card key={index} className="premium-card card-hover slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
               <CardContent className="p-8">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={20} className="text-yellow-400 fill-current hover:scale-110 transition-transform duration-300" />
+                    <Star key={i} size={20} className="text-yellow-400 fill-current" />
                   ))}
                 </div>
                 
-                <p className="text-gray-300 leading-relaxed mb-6 text-lg hover:text-white transition-colors duration-500">
+                <p className="text-gray-300 leading-relaxed mb-6 text-lg hover:text-white transition-colors duration-300">
                   "{testimonial.content}"
                 </p>
                 
                 <div className="border-t border-white/10 pt-6">
-                  <div className="font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent text-lg">
+                  <div className="font-semibold gradient-text text-lg">
                     {testimonial.name}
                   </div>
                   <div className="text-gray-400 mb-2 hover:text-gray-300 transition-colors duration-300">
                     {testimonial.role}
                   </div>
-                  <div className="text-sm text-gray-500 bg-gradient-to-r from-gray-800 to-gray-700 rounded-full px-3 py-1 inline-block border border-white/10">
+                  <div className="text-sm text-gray-400 bg-white/5 rounded-full px-3 py-1 inline-block border border-white/10">
                     {testimonial.category}
                   </div>
                 </div>

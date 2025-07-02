@@ -7,35 +7,35 @@
 
 @layer base {
   :root {
-    --background: 220 15% 3%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 15% 6%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 92%;
 
-    --popover: 220 15% 6%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 92%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 15% 3%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 220 15% 10%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 88%;
 
-    --muted: 220 15% 10%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 220 15% 12%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 0 0% 18%;
+    --accent-foreground: 0 0% 92%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 15%;
-    --input: 220 15% 12%;
-    --ring: 0 0% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 90%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
   }
 }
 
@@ -46,10 +46,7 @@
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
-    background: 
-      radial-gradient(ellipse 80% 50% at top, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 50% at bottom, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
-      linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
     background-attachment: fixed;
   }
 
@@ -60,113 +57,81 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
   }
   
-  .premium-gradient {
-    @apply bg-gradient-to-br from-white/20 via-white/5 to-transparent;
+  .premium-card {
+    @apply bg-gradient-to-br from-white/8 to-white/2 backdrop-blur-sm border border-white/15;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
-  .glass-effect {
-    @apply bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl border border-white/20;
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3), 
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-  }
-  
-  .hover-scale {
-    @apply transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-white/10;
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1;
   }
   
   .fade-in {
-    animation: premiumFadeIn 1.2s ease-out forwards;
+    animation: fadeIn 0.8s ease-out forwards;
   }
   
   .slide-up {
-    animation: premiumSlideUp 1s ease-out forwards;
-  }
-  
-  .float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .glow {
-    animation: glow 4s ease-in-out infinite alternate;
-  }
-  
-  .premium-shadow {
-    box-shadow: 
-      0 25px 50px -12px rgba(0, 0, 0, 0.8), 
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      0 4px 16px rgba(255, 255, 255, 0.05);
+    animation: slideUp 0.6s ease-out forwards;
   }
   
   .premium-button {
-    @apply bg-gradient-to-r from-white via-gray-100 to-white text-black hover:from-gray-100 hover:to-gray-200 
-           transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/20
-           border border-white/20 backdrop-blur-sm;
+    @apply bg-gradient-to-r from-white to-gray-100 text-black hover:from-gray-100 hover:to-gray-200 
+           transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20
+           border border-white/10;
   }
   
   .premium-button-outline {
-    @apply bg-gradient-to-r from-transparent via-white/5 to-transparent 
-           border-2 border-white/30 text-white hover:bg-gradient-to-r hover:from-white/10 hover:to-white/10
-           hover:border-white/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10
-           backdrop-blur-sm;
+    @apply bg-transparent border-2 border-white/30 text-white hover:bg-white/5
+           hover:border-white/50 transition-all duration-300 hover:scale-105;
   }
   
-  .section-gradient {
-    @apply bg-gradient-to-b from-background via-background/80 to-card/20;
+  .section-premium {
+    @apply bg-gradient-to-b from-black/50 via-gray-900/30 to-black/50;
   }
   
-  .card-premium {
-    @apply glass-effect hover:bg-gradient-to-br hover:from-white/15 hover:to-white/5
-           hover:border-white/30 transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-white/10;
-  }
-  
-  .shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite;
+  .card-hover {
+    @apply hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5
+           hover:border-white/25 transition-all duration-300 hover:scale-[1.02];
   }
   
   .premium-nav {
-    @apply glass-effect hover:bg-gradient-to-r hover:from-white/5 hover:to-transparent
-           transition-all duration-500 hover:shadow-lg hover:shadow-white/5;
+    @apply bg-gradient-to-r from-black/80 via-gray-900/80 to-black/80 backdrop-blur-xl
+           border-b border-white/10;
   }
   
-  .premium-hero {
+  .hero-premium {
     background: 
-      radial-gradient(ellipse 50% 80% at 20% 40%, rgba(120, 119, 198, 0.15), transparent),
-      radial-gradient(ellipse 50% 80% at 80% 10%, rgba(120, 119, 198, 0.15), transparent),
-      radial-gradient(ellipse 50% 80% at 40% 80%, rgba(120, 119, 198, 0.15), transparent),
-      linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%);
+      radial-gradient(ellipse 60% 80% at 50% 20%, rgba(255, 255, 255, 0.03), transparent),
+      linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  }
+  
+  .floating-element {
+    animation: float 8s ease-in-out infinite;
   }
 }
 
-@keyframes premiumFadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(40px);
-    filter: blur(8px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
-@keyframes premiumSlideUp {
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(60px);
-    filter: blur(6px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -175,16 +140,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  }
-  to {
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    transform: translateY(-10px);
   }
 }
 
@@ -198,33 +154,24 @@
 }
 
 .scroll-animation {
-  animation: scroll 30s linear infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  animation: scroll 25s linear infinite;
 }
 
 /* Premium scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15));
 }

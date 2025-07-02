@@ -1,11 +1,8 @@
-
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-card via-card/80 to-background border-t border-white/10 py-16 px-6 lg:px-8 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-      
+    <footer className="bg-gradient-to-b from-card to-background border-t border-white/10 py-16 px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12 slide-up">
           <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
@@ -29,10 +26,10 @@ const Footer = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="outline" className="premium-button-outline border-gray-600 text-gray-300 hover:text-black">
+              <Button variant="outline" className="premium-button-outline text-gray-300 hover:text-black">
                 Contact Sales
               </Button>
-              <Button variant="outline" className="premium-button-outline border-gray-600 text-gray-300 hover:text-black">
+              <Button variant="outline" className="premium-button-outline text-gray-300 hover:text-black">
                 WhatsApp
               </Button>
             </div>

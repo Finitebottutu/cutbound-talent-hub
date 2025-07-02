@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,9 +7,8 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-background/90 via-background/80 to-background/70 backdrop-blur-xl border-b border-white/10">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent shimmer"></div>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <nav className="fixed top-0 w-full z-50 premium-nav">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="group">
@@ -22,31 +20,31 @@ const Navigation = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#services" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <a href="#services" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 Services
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="#how-it-works" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <a href="#how-it-works" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 How it Works
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="#testimonials" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <a href="#testimonials" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 Testimonials
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <Link to="/referral" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <Link to="/referral" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 Referral Program
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <a href="#faq" className="text-foreground hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <a href="#faq" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 FAQ
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="premium-button-outline text-foreground hover:text-black">
+            <Button variant="ghost" className="premium-button-outline text-gray-300 hover:text-black">
               For Freelancers
             </Button>
             <Button className="premium-button">
