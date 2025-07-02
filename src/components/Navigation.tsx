@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import {
@@ -11,9 +11,34 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+
+  const toggleSection = (sectionId: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setOpenSections({});
+  };
+
+  // Prevent body scroll when menu is open
+  if (isMenuOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
 
   const rolePages = [
     { title: 'Full-stack developers', path: '/hire/full-stack-developers' },
@@ -108,275 +133,479 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 premium-nav">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="group">
-              <h1 className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
-                Cutbound
-              </h1>
-            </Link>
-          </div>
-          
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <Link to="/" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+    <>
+      <nav className="fixed top-0 w-full z-50 premium-nav">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <Link to="/" className="group">
+                <h1 className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
+                  Cutbound
+                </h1>
               </Link>
-              
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
-                      Our Services
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid w-[1200px] gap-8 p-8">
-                        <div className="grid grid-cols-3 gap-8">
-                          <div>
-                            <h3 className="font-semibold text-white mb-4 text-lg">UI/UX Design</h3>
-                            <div className="grid gap-2 mb-6">
-                              {serviceCategories.uiux.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <Link to="/" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                  Home
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+                
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
+                        Our Services
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid w-[1200px] gap-8 p-8">
+                          <div className="grid grid-cols-3 gap-8">
+                            <div>
+                              <h3 className="font-semibold text-white mb-4 text-lg">UI/UX Design</h3>
+                              <div className="grid gap-2 mb-6">
+                                {serviceCategories.uiux.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
+                              
+                              <h3 className="font-semibold text-white mb-4 text-lg">Mobile App</h3>
+                              <div className="grid gap-2">
+                                {serviceCategories.mobile.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
                             </div>
                             
-                            <h3 className="font-semibold text-white mb-4 text-lg">Mobile App</h3>
-                            <div className="grid gap-2">
-                              {serviceCategories.mobile.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
-                            </div>
-                          </div>
-                          
-                          <div>
-                            <h3 className="font-semibold text-white mb-4 text-lg">Website Development</h3>
-                            <div className="grid gap-2 mb-6">
-                              {serviceCategories.website.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
-                            </div>
-                            
-                            <h3 className="font-semibold text-white mb-4 text-lg">Digital Marketing</h3>
-                            <div className="grid gap-2">
-                              {serviceCategories.marketing.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
-                            </div>
-                          </div>
-                          
-                          <div>
-                            <h3 className="font-semibold text-white mb-4 text-lg">Content Writing</h3>
-                            <div className="grid gap-2 mb-6">
-                              {serviceCategories.writing.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
+                            <div>
+                              <h3 className="font-semibold text-white mb-4 text-lg">Website Development</h3>
+                              <div className="grid gap-2 mb-6">
+                                {serviceCategories.website.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
+                              
+                              <h3 className="font-semibold text-white mb-4 text-lg">Digital Marketing</h3>
+                              <div className="grid gap-2">
+                                {serviceCategories.marketing.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
                             </div>
                             
-                            <h3 className="font-semibold text-white mb-4 text-lg">Custom Software</h3>
-                            <div className="grid gap-2">
-                              {serviceCategories.software.map((service) => (
-                                <NavigationMenuLink key={service.path} asChild>
-                                  <Link
-                                    to={service.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
+                            <div>
+                              <h3 className="font-semibold text-white mb-4 text-lg">Content Writing</h3>
+                              <div className="grid gap-2 mb-6">
+                                {serviceCategories.writing.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
+                              
+                              <h3 className="font-semibold text-white mb-4 text-lg">Custom Software</h3>
+                              <div className="grid gap-2">
+                                {serviceCategories.software.map((service) => (
+                                  <NavigationMenuLink key={service.path} asChild>
+                                    <Link
+                                      to={service.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                  
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
-                      Hire
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid w-[800px] gap-6 p-6">
-                        <div className="grid grid-cols-2 gap-6">
-                          <div>
-                            <h3 className="font-semibold text-white mb-4">Hire by Role</h3>
-                            <div className="grid gap-2">
-                              {rolePages.slice(0, 7).map((page) => (
-                                <NavigationMenuLink key={page.path} asChild>
-                                  <Link
-                                    to={page.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    Hire {page.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
+                        Hire
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid w-[800px] gap-6 p-6">
+                          <div className="grid grid-cols-2 gap-6">
+                            <div>
+                              <h3 className="font-semibold text-white mb-4">Hire by Role</h3>
+                              <div className="grid gap-2">
+                                {rolePages.slice(0, 7).map((page) => (
+                                  <NavigationMenuLink key={page.path} asChild>
+                                    <Link
+                                      to={page.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      Hire {page.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-white mb-4">Hire by Skill</h3>
-                            <div className="grid gap-2">
-                              {skillPages.slice(0, 10).map((page) => (
-                                <NavigationMenuLink key={page.path} asChild>
-                                  <Link
-                                    to={page.path}
-                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
-                                  >
-                                    Hire {page.title}
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
-                              <Link
-                                to="/hire/all-skills"
-                                className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-blue-400 hover:text-blue-300 text-sm font-medium"
-                              >
-                                View all skills →
-                              </Link>
+                            <div>
+                              <h3 className="font-semibold text-white mb-4">Hire by Skill</h3>
+                              <div className="grid gap-2">
+                                {skillPages.slice(0, 10).map((page) => (
+                                  <NavigationMenuLink key={page.path} asChild>
+                                    <Link
+                                      to={page.path}
+                                      className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-gray-300 hover:text-white text-sm"
+                                    >
+                                      Hire {page.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                                <Link
+                                  to="/hire/all-skills"
+                                  className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-blue-400 hover:text-blue-300 text-sm font-medium"
+                                >
+                                  View all skills →
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-              
-              <a href="#portfolio" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                Portfolio
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#blogs" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                Blogs
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#about" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </a>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+                
+                <a href="#portfolio" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                  Portfolio
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#blogs" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                  Blogs
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                  About
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+                  Contact
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="premium-button-outline text-gray-300 hover:text-black">
-              For Freelancers
-            </Button>
-            <Button className="premium-button">
-              Hire Talent
-            </Button>
-          </div>
-
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-white transition-all duration-300 hover:scale-110"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {isMenuOpen && (
-        <div className="md:hidden glass-effect border-b border-white/10 fade-in">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Home</Link>
-            
-            <div className="space-y-2">
-              <p className="px-3 py-2 text-white font-semibold">Our Services</p>
-              <p className="px-6 py-1 text-gray-400 text-sm">UI/UX Design</p>
-              {serviceCategories.uiux.map((service) => (
-                <Link
-                  key={service.path}
-                  to={service.path}
-                  className="block px-8 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded text-sm"
-                >
-                  {service.title}
-                </Link>
-              ))}
-              
-              <p className="px-6 py-1 text-gray-400 text-sm mt-3">Website Development</p>
-              {serviceCategories.website.slice(0, 4).map((service) => (
-                <Link
-                  key={service.path}
-                  to={service.path}
-                  className="block px-8 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded text-sm"
-                >
-                  {service.title}
-                </Link>
-              ))}
-              
-              <p className="px-3 py-2 text-white font-semibold mt-4">Hire</p>
-              <p className="px-6 py-1 text-gray-400 text-sm">By Role</p>
-              {rolePages.slice(0, 5).map((page) => (
-                <Link
-                  key={page.path}
-                  to={page.path}
-                  className="block px-8 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded text-sm"
-                >
-                  Hire {page.title}
-                </Link>
-              ))}
-            </div>
-            
-            <a href="#portfolio" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Portfolio</a>
-            <a href="#blogs" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Blogs</a>
-            <a href="#about" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">About</a>
-            <a href="#contact" className="block px-3 py-2 text-foreground hover:text-white transition-all duration-300 hover:bg-white/5 rounded">Contact</a>
-            
-            <div className="pt-4 pb-2 space-y-2">
-              <Button variant="ghost" className="w-full premium-button-outline text-foreground hover:text-black">
+            {/* Desktop Buttons */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <Button variant="ghost" className="premium-button-outline text-gray-300 hover:text-black">
                 For Freelancers
               </Button>
-              <Button className="w-full premium-button">
+              <Button className="premium-button">
                 Hire Talent
               </Button>
             </div>
+
+            {/* Mobile Hamburger Button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 p-2"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={closeMenu}
+        />
       )}
-    </nav>
+
+      {/* Mobile Menu */}
+      <div className={`fixed top-16 left-0 right-0 bottom-0 z-40 lg:hidden transition-transform duration-300 ${
+        isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="bg-gradient-to-b from-black/95 via-gray-900/95 to-black/95 backdrop-blur-xl h-full overflow-y-auto">
+          <div className="px-4 py-6">
+            {/* Close Button */}
+            <div className="flex justify-end mb-6">
+              <button
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-white transition-all duration-300 p-2"
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Mobile Menu Items */}
+            <div className="space-y-2">
+              <Link 
+                to="/" 
+                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Home
+              </Link>
+
+              {/* Our Services Section */}
+              <Collapsible open={openSections.services} onOpenChange={() => toggleSection('services')}>
+                <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                  Our Services
+                  {openSections.services ? <Minus size={20} /> : <Plus size={20} />}
+                </CollapsibleTrigger>
+                <CollapsibleContent className="ml-4 mt-2 space-y-2">
+                  {/* UI/UX Design */}
+                  <Collapsible open={openSections.uiux} onOpenChange={() => toggleSection('uiux')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      UI/UX Design
+                      {openSections.uiux ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.uiux.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Website Development */}
+                  <Collapsible open={openSections.website} onOpenChange={() => toggleSection('website')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Website Development
+                      {openSections.website ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.website.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Mobile App */}
+                  <Collapsible open={openSections.mobile} onOpenChange={() => toggleSection('mobile')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Mobile App
+                      {openSections.mobile ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.mobile.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Digital Marketing */}
+                  <Collapsible open={openSections.marketing} onOpenChange={() => toggleSection('marketing')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Digital Marketing
+                      {openSections.marketing ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.marketing.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Content Writing */}
+                  <Collapsible open={openSections.writing} onOpenChange={() => toggleSection('writing')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Content Writing
+                      {openSections.writing ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.writing.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Custom Software */}
+                  <Collapsible open={openSections.software} onOpenChange={() => toggleSection('software')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Custom Software
+                      {openSections.software ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {serviceCategories.software.map((service) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Hire Section */}
+              <Collapsible open={openSections.hire} onOpenChange={() => toggleSection('hire')}>
+                <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                  Hire
+                  {openSections.hire ? <Minus size={20} /> : <Plus size={20} />}
+                </CollapsibleTrigger>
+                <CollapsibleContent className="ml-4 mt-2 space-y-2">
+                  {/* Hire by Role */}
+                  <Collapsible open={openSections.hireRole} onOpenChange={() => toggleSection('hireRole')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Hire by Role
+                      {openSections.hireRole ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {rolePages.map((page) => (
+                        <Link
+                          key={page.path}
+                          to={page.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          Hire {page.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Hire by Skill */}
+                  <Collapsible open={openSections.hireSkill} onOpenChange={() => toggleSection('hireSkill')}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300">
+                      Hire by Skill
+                      {openSections.hireSkill ? <Minus size={16} /> : <Plus size={16} />}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 mt-1 space-y-1">
+                      {skillPages.map((page) => (
+                        <Link
+                          key={page.path}
+                          to={page.path}
+                          className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                          onClick={closeMenu}
+                        >
+                          Hire {page.title}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Simple Links */}
+              <a 
+                href="#portfolio" 
+                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Portfolio
+              </a>
+              <a 
+                href="#blogs" 
+                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Blogs
+              </a>
+              <a 
+                href="#about" 
+                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                onClick={closeMenu}
+              >
+                About
+              </a>
+              <a 
+                href="#contact" 
+                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                onClick={closeMenu}
+              >
+                Contact
+              </a>
+
+              {/* Mobile Buttons */}
+              <div className="pt-6 space-y-3 border-t border-white/10 mt-6">
+                <Button variant="ghost" className="w-full premium-button-outline text-gray-300 hover:text-black text-base py-3">
+                  For Freelancers
+                </Button>
+                <Button className="w-full premium-button text-base py-3">
+                  Hire Talent
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
