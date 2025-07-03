@@ -125,27 +125,28 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black text-white">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-white via-blue-50 to-orange-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Work That <span className="text-blue-600">Delivers.</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Work That <span className="gradient-text">Delivers.</span>
               <br />Not Just Impresses.
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Explore how Cutbound helps startups scale through design, tech, and marketing — 
               all built by India's top 1% freelance talent.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+              <Button size="lg" className="premium-button px-8 py-3">
                 Book a Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3">
+              <Button size="lg" variant="outline" className="premium-button-outline text-white border-white hover:bg-white hover:text-black px-8 py-3">
                 Let's Build Together
               </Button>
             </div>
@@ -154,29 +155,29 @@ const Portfolio = () => {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Real solutions for real businesses. See how we've helped startups and enterprises achieve their goals.
             </p>
           </div>
 
           {/* Filter Tabs */}
           <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="website">Website</TabsTrigger>
-              <TabsTrigger value="mobile">Mobile</TabsTrigger>
-              <TabsTrigger value="software">Software</TabsTrigger>
-              <TabsTrigger value="marketing">Marketing</TabsTrigger>
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8 bg-gray-800 border-gray-700">
+              <TabsTrigger value="all" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300">All</TabsTrigger>
+              <TabsTrigger value="website" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300">Website</TabsTrigger>
+              <TabsTrigger value="mobile" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300">Mobile</TabsTrigger>
+              <TabsTrigger value="software" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300">Software</TabsTrigger>
+              <TabsTrigger value="marketing" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300">Marketing</TabsTrigger>
             </TabsList>
 
             <TabsContent value="all">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {featuredProjects.map((project) => (
-                  <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+                  <Card key={project.id} className="group hover:shadow-2xl transition-all duration-300 bg-gray-800 border-gray-700 hover:border-blue-500/50">
                     <div className="relative overflow-hidden rounded-t-lg">
                       <img 
                         src={project.image} 
@@ -184,7 +185,7 @@ const Portfolio = () => {
                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <Button variant="secondary" size="sm">
+                        <Button variant="secondary" size="sm" className="bg-white text-black hover:bg-gray-200">
                           <Eye className="mr-2 h-4 w-4" />
                           View Case Study
                         </Button>
@@ -193,18 +194,18 @@ const Portfolio = () => {
                     <CardHeader>
                       <div className="flex flex-wrap gap-2 mb-3">
                         {project.services.map((service) => (
-                          <Badge key={service} variant="secondary" className="text-xs">
+                          <Badge key={service} variant="secondary" className="text-xs bg-blue-600/20 text-blue-300 border-blue-500/30">
                             {service}
                           </Badge>
                         ))}
                       </div>
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <CardTitle className="text-xl text-white">{project.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <p className="text-gray-300 mb-4">{project.description}</p>
                       <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-500">{project.client}</span>
-                        <span className="text-green-600 font-semibold">{project.results}</span>
+                        <span className="text-gray-400">{project.client}</span>
+                        <span className="text-green-400 font-semibold">{project.results}</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -216,8 +217,37 @@ const Portfolio = () => {
             <TabsContent value="website">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {featuredProjects.filter(p => p.category === 'website').map((project) => (
-                  <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
-                    {/* Same card structure as above */}
+                  <Card key={project.id} className="group hover:shadow-2xl transition-all duration-300 bg-gray-800 border-gray-700 hover:border-blue-500/50">
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <Button variant="secondary" size="sm" className="bg-white text-black hover:bg-gray-200">
+                          <Eye className="mr-2 h-4 w-4" />
+                          View Case Study
+                        </Button>
+                      </div>
+                    </div>
+                    <CardHeader>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {project.services.map((service) => (
+                          <Badge key={service} variant="secondary" className="text-xs bg-blue-600/20 text-blue-300 border-blue-500/30">
+                            {service}
+                          </Badge>
+                        ))}
+                      </div>
+                      <CardTitle className="text-xl text-white">{project.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-300 mb-4">{project.description}</p>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-gray-400">{project.client}</span>
+                        <span className="text-green-400 font-semibold">{project.results}</span>
+                      </div>
+                    </CardContent>
                   </Card>
                 ))}
               </div>
@@ -227,16 +257,16 @@ const Portfolio = () => {
       </section>
 
       {/* Case Study Preview Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
-            <p className="text-lg text-gray-600">Deep dives into how we solve complex challenges</p>
+            <h2 className="text-4xl font-bold text-white mb-4">Success Stories</h2>
+            <p className="text-lg text-gray-300">Deep dives into how we solve complex challenges</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {caseStudies.map((study, index) => (
-              <Card key={index} className="overflow-hidden border-0 shadow-xl">
+              <Card key={index} className="overflow-hidden bg-gray-800 border-gray-700">
                 <div className="md:flex">
                   <div className="md:w-1/2">
                     <img 
@@ -246,34 +276,34 @@ const Portfolio = () => {
                     />
                   </div>
                   <div className="md:w-1/2 p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{study.title}</h3>
-                    <p className="text-blue-600 font-semibold mb-4">{study.client}</p>
+                    <h3 className="text-2xl font-bold text-white mb-2">{study.title}</h3>
+                    <p className="text-blue-400 font-semibold mb-4">{study.client}</p>
                     
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Challenge</h4>
-                        <p className="text-gray-600 text-sm">{study.challenge}</p>
+                        <h4 className="font-semibold text-white mb-1">Challenge</h4>
+                        <p className="text-gray-300 text-sm">{study.challenge}</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Solution</h4>
-                        <p className="text-gray-600 text-sm">{study.solution}</p>
+                        <h4 className="font-semibold text-white mb-1">Solution</h4>
+                        <p className="text-gray-300 text-sm">{study.solution}</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Results</h4>
+                        <h4 className="font-semibold text-white mb-2">Results</h4>
                         <div className="grid grid-cols-1 gap-2">
                           {Object.entries(study.results).map(([key, value]) => (
                             <div key={key} className="flex items-center">
-                              <TrendingUp className="h-4 w-4 text-green-600 mr-2" />
-                              <span className="text-sm font-semibold text-green-600">{value}</span>
+                              <TrendingUp className="h-4 w-4 text-green-400 mr-2" />
+                              <span className="text-sm font-semibold text-green-400">{value}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
                     
-                    <Button className="mt-6 w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="mt-6 w-full premium-button">
                       Read Full Case Study
                       <ExternalLink className="ml-2 h-4 w-4" />
                     </Button>
@@ -286,17 +316,17 @@ const Portfolio = () => {
       </section>
 
       {/* Client Logos & Testimonials */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Startups Across the Globe</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Trusted by Startups Across the Globe</h2>
           </div>
 
           {/* Client Logos */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 mb-16">
             {clientLogos.map((logo, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
-                <span className="text-gray-600 font-semibold text-sm">{logo}</span>
+              <div key={index} className="flex items-center justify-center p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <span className="text-gray-300 font-semibold text-sm">{logo}</span>
               </div>
             ))}
           </div>
@@ -304,17 +334,17 @@ const Portfolio = () => {
           {/* Testimonials */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg">
+              <Card key={index} className="bg-gray-800 border-gray-700">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.content}"</p>
+                  <p className="text-gray-300 mb-4 italic">"{testimonial.content}"</p>
                   <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-gray-500 text-sm">{testimonial.position}</p>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="text-gray-400 text-sm">{testimonial.position}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -324,7 +354,7 @@ const Portfolio = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-16 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-4">
             Need a partner who delivers on time and on target?

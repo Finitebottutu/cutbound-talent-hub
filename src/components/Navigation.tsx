@@ -309,10 +309,6 @@ const Navigation = () => {
                   Portfolio
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-                <a href="#blogs" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
-                  Blogs
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                </a>
               </div>
             </div>
 
@@ -561,13 +557,6 @@ const Navigation = () => {
               >
                 Portfolio
               </Link>
-              <a 
-                href="#blogs" 
-                className="block px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
-                onClick={closeMenu}
-              >
-                Blogs
-              </a>
 
               {/* Mobile Buttons */}
               <div className="pt-6 space-y-3 border-t border-white/10 mt-6">
