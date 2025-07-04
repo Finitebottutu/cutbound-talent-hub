@@ -1,18 +1,16 @@
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
+import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
-import Hire from "./pages/Hire";
 import { ContactFormProvider } from './contexts/ContactFormContext';
 import ContactForm from './components/ContactForm';
 import { useContactForm } from './contexts/ContactFormContext';
@@ -26,11 +24,8 @@ const AppContent = () => {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/hire" element={<Hire />} />
         </Routes>
       </Router>
       <ContactForm isOpen={isFormOpen} onClose={closeForm} />
