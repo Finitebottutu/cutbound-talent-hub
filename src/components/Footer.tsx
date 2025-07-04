@@ -1,6 +1,10 @@
+
 import { Button } from '@/components/ui/button';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 const Footer = () => {
+  const { openForm } = useContactForm();
+
   return (
     <footer className="bg-gradient-to-b from-card to-background border-t border-white/10 py-16 px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -11,7 +15,11 @@ const Footer = () => {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of companies that trust Cutbound for their talent needs.
           </p>
-          <Button size="lg" className="premium-button text-lg px-8 py-6">
+          <Button 
+            size="lg" 
+            className="premium-button text-lg px-8 py-6"
+            onClick={openForm}
+          >
             Get Started Today
           </Button>
         </div>
@@ -26,10 +34,18 @@ const Footer = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="outline" className="premium-button-outline text-gray-300 hover:text-black">
+              <Button 
+                variant="outline" 
+                className="premium-button-outline text-gray-300 hover:text-black"
+                onClick={openForm}
+              >
                 Contact Sales
               </Button>
-              <Button variant="outline" className="premium-button-outline text-gray-300 hover:text-black">
+              <Button 
+                variant="outline" 
+                className="premium-button-outline text-gray-300 hover:text-black"
+                onClick={openForm}
+              >
                 WhatsApp
               </Button>
             </div>

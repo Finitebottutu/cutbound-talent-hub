@@ -1,4 +1,3 @@
-
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -6,8 +5,11 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowRight, Eye, ExternalLink, Star, TrendingUp, Users, Zap } from 'lucide-react';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 const Portfolio = () => {
+  const { openForm } = useContactForm();
+
   const featuredProjects = [
     {
       id: 1,
@@ -147,11 +149,20 @@ const Portfolio = () => {
               all built by India's top 1% freelance talent.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button size="lg" className="premium-button px-10 py-7 rounded-full text-lg font-semibold">
+              <Button 
+                size="lg" 
+                className="premium-button px-10 py-7 rounded-full text-lg font-semibold"
+                onClick={openForm}
+              >
                 Book a Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="premium-button-outline text-white border-white hover:bg-white hover:text-black px-10 py-7 rounded-full text-lg font-semibold">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="premium-button-outline text-white border-white hover:bg-white hover:text-black px-10 py-7 rounded-full text-lg font-semibold"
+                onClick={openForm}
+              >
                 Let's Build Together
               </Button>
             </div>
@@ -372,11 +383,21 @@ const Portfolio = () => {
             Join hundreds of successful startups who trust Cutbound with their most important projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4"
+              onClick={openForm}
+            >
               <Zap className="mr-2 h-5 w-5" />
               Let's Talk
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4"
+              onClick={openForm}
+            >
               <Users className="mr-2 h-5 w-5" />
               View Our Process
             </Button>

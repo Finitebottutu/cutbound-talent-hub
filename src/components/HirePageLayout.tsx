@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
 import { Search, Filter, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import DeveloperProfile from './DeveloperProfile';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 interface Developer {
   name: string;
@@ -30,6 +30,7 @@ interface HirePageLayoutProps {
 const HirePageLayout = ({ pageTitle, pageDescription, developers, category }: HirePageLayoutProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating');
+  const { openForm } = useContactForm();
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -101,7 +102,11 @@ const HirePageLayout = ({ pageTitle, pageDescription, developers, category }: Hi
           
           {/* Load More Button */}
           <div className="text-center mt-16">
-            <Button size="lg" className="premium-button px-8 py-4">
+            <Button 
+              size="lg" 
+              className="premium-button px-8 py-4"
+              onClick={openForm}
+            >
               Load More Developers
             </Button>
           </div>
@@ -122,10 +127,19 @@ const HirePageLayout = ({ pageTitle, pageDescription, developers, category }: Hi
             Get matched with pre-vetted developers in 24 hours or less
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="premium-button px-8 py-4">
+            <Button 
+              size="lg" 
+              className="premium-button px-8 py-4"
+              onClick={openForm}
+            >
               Post Your Project
             </Button>
-            <Button size="lg" variant="outline" className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4"
+              onClick={openForm}
+            >
               Talk to an Expert
             </Button>
           </div>

@@ -1,8 +1,12 @@
 
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 const Hero = () => {
+  const { openForm } = useContactForm();
+
   return (
     <section className="pt-32 pb-32 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
@@ -40,11 +44,20 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-24 slide-up" style={{ animationDelay: '0.8s' }}>
-            <Button size="lg" className="premium-button text-lg px-10 py-7 rounded-full font-semibold">
+            <Button 
+              size="lg" 
+              className="premium-button text-lg px-10 py-7 rounded-full font-semibold"
+              onClick={openForm}
+            >
               Hire Talent Now
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="premium-button-outline text-lg px-10 py-7 rounded-full font-semibold text-white border-white hover:bg-white hover:text-black">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="premium-button-outline text-lg px-10 py-7 rounded-full font-semibold text-white border-white hover:bg-white hover:text-black"
+              onClick={openForm}
+            >
               Join as Freelancer
             </Button>
           </div>

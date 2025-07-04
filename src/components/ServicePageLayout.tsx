@@ -1,10 +1,10 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, CheckCircle, ArrowRight, Users, Award, Clock, Shield } from 'lucide-react';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 interface ServicePageLayoutProps {
   pageTitle: string;
@@ -55,6 +55,8 @@ const ServicePageLayout = ({
   faqs,
   category
 }: ServicePageLayoutProps) => {
+  const { openForm } = useContactForm();
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navigation />
@@ -84,11 +86,20 @@ const ServicePageLayout = ({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-24 slide-up" style={{ animationDelay: '0.4s' }}>
-              <Button size="lg" className="premium-button text-lg px-10 py-7 rounded-full font-semibold">
+              <Button 
+                size="lg" 
+                className="premium-button text-lg px-10 py-7 rounded-full font-semibold"
+                onClick={openForm}
+              >
                 Get Started Today
                 <ArrowRight className="ml-2" size={20} />
               </Button>
-              <Button size="lg" variant="outline" className="premium-button-outline text-lg px-10 py-7 rounded-full font-semibold text-white border-white hover:bg-white hover:text-black">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="premium-button-outline text-lg px-10 py-7 rounded-full font-semibold text-white border-white hover:bg-white hover:text-black"
+                onClick={openForm}
+              >
                 View Portfolio
               </Button>
             </div>
@@ -246,6 +257,7 @@ const ServicePageLayout = ({
                   <Button 
                     className={`w-full ${plan.popular ? 'premium-button' : 'premium-button-outline text-white border-white hover:bg-white hover:text-black'}`}
                     size="lg"
+                    onClick={openForm}
                   >
                     Get Started
                   </Button>
@@ -371,11 +383,20 @@ const ServicePageLayout = ({
             Let's discuss your project and bring your vision to life with our expert {category.toLowerCase()} services.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="premium-button text-lg px-10 py-7 rounded-full font-semibold">
+            <Button 
+              size="lg" 
+              className="premium-button text-lg px-10 py-7 rounded-full font-semibold"
+              onClick={openForm}
+            >
               Start Your Project
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 text-lg px-10 py-7 rounded-full font-semibold">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 text-lg px-10 py-7 rounded-full font-semibold"
+              onClick={openForm}
+            >
               Schedule Consultation
             </Button>
           </div>
