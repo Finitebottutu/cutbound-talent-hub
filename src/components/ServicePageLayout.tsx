@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -60,25 +59,25 @@ const ServicePageLayout = ({
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-20 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+      <section className="pt-32 pb-32 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center fade-in">
-            <Badge className="mb-8 bg-white/10 text-white border-white/20 px-6 py-3">
+            <Badge className="mb-12 bg-white/10 text-white border-white/20 px-6 py-3">
               {category} Services
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-8 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-12 tracking-tight">
               <span className="gradient-text slide-up">
                 {heroTitle}
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed font-light slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl text-gray-300 mb-20 max-w-4xl mx-auto leading-relaxed font-light slide-up" style={{ animationDelay: '0.2s' }}>
               {heroDescription}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 slide-up" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-24 slide-up" style={{ animationDelay: '0.4s' }}>
               <Button size="lg" className="premium-button text-lg px-10 py-7 rounded-full font-semibold">
                 Get Started Today
                 <ArrowRight className="ml-2" size={20} />
@@ -112,7 +111,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Service Overview */}
-      <section className="py-20 px-6 lg:px-8 bg-gray-900">
+      <section className="py-24 px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -137,7 +136,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Our Process */}
-      <section className="py-20 px-6 lg:px-8 bg-black">
+      <section className="py-24 px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -165,7 +164,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Portfolio Showcase */}
-      <section className="py-20 px-6 lg:px-8 bg-gray-900">
+      <section className="py-24 px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -208,7 +207,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Pricing Packages */}
-      <section className="py-20 px-6 lg:px-8 bg-black">
+      <section className="py-24 px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -252,7 +251,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Team Expertise */}
-      <section className="py-20 px-6 lg:px-8 bg-gray-900">
+      <section className="py-24 px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -283,7 +282,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* Client Testimonials */}
-      <section className="py-20 px-6 lg:px-8 bg-black">
+      <section className="py-24 px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -328,7 +327,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gray-900">
+      <section className="py-24 px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 slide-up">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8">
@@ -353,7 +352,7 @@ const ServicePageLayout = ({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
+      <section className="py-24 px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
         <div className="max-w-4xl mx-auto text-center slide-up">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Ready to Get Started?
