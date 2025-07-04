@@ -36,13 +36,18 @@ const HirePageLayout = ({ pageTitle, pageDescription, developers, category }: Hi
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-20 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+      <section className="pt-32 pb-32 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
-        <div className="max-w-7xl mx-auto text-center relative">
+        
+        {/* Subtle floating background elements */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/2 rounded-full blur-3xl floating-element"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/1 rounded-full blur-3xl floating-element" style={{ animationDelay: '3s' }}></div>
+        
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-8">
             <span className="gradient-text">{pageTitle}</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
             {pageDescription}
           </p>
           
@@ -104,19 +109,23 @@ const HirePageLayout = ({ pageTitle, pageDescription, developers, category }: Hi
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 px-6 lg:px-8 bg-gradient-to-br from-gray-800 via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/2 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/1 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to hire top {category} talent?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto">
             Get matched with pre-vetted developers in 24 hours or less
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button size="lg" className="premium-button px-8 py-4">
               Post Your Project
             </Button>
-            <Button size="lg" variant="outline" className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4">
+            <Button size="lg" variant="outline" className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4">
               Talk to an Expert
             </Button>
           </div>

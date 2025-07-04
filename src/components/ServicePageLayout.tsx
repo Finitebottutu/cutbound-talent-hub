@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -61,6 +62,11 @@ const ServicePageLayout = ({
       {/* Hero Section */}
       <section className="pt-32 pb-32 px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        
+        {/* Subtle floating background elements */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/2 rounded-full blur-3xl floating-element"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/1 rounded-full blur-3xl floating-element" style={{ animationDelay: '3s' }}></div>
+        
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center fade-in">
             <Badge className="mb-12 bg-white/10 text-white border-white/20 px-6 py-3">
@@ -151,8 +157,8 @@ const ServicePageLayout = ({
             {process.map((step, index) => (
               <Card key={index} className="bg-gray-800 border-gray-700 hover:bg-gray-750 hover:border-gray-600 transition-all duration-300 slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">{step.step}</span>
+                  <div className="w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold gradient-text">{step.step}</span>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
                   <p className="text-gray-300 leading-relaxed">{step.description}</p>
@@ -352,12 +358,16 @@ const ServicePageLayout = ({
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
-        <div className="max-w-4xl mx-auto text-center slide-up">
+      <section className="py-24 px-6 lg:px-8 bg-gradient-to-br from-gray-800 via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/2 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/1 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-4xl mx-auto text-center slide-up relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             Let's discuss your project and bring your vision to life with our expert {category.toLowerCase()} services.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -365,7 +375,7 @@ const ServicePageLayout = ({
               Start Your Project
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-10 py-7 rounded-full font-semibold">
+            <Button size="lg" variant="outline" className="premium-button-outline border-2 border-white text-white hover:bg-white hover:text-gray-900 text-lg px-10 py-7 rounded-full font-semibold">
               Schedule Consultation
             </Button>
           </div>
