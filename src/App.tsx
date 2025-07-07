@@ -1,4 +1,3 @@
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,6 +14,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Hire from "./pages/Hire";
 import Portfolio from "./pages/Portfolio";
+import Referral from "./pages/Referral";
+import ComingSoon from "./pages/ComingSoon";
 import { ContactFormProvider } from './contexts/ContactFormContext';
 import ContactForm from './components/ContactForm';
 import { useContactForm } from './contexts/ContactFormContext';
@@ -119,6 +120,8 @@ const AppContent = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/hire" element={<Hire />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/referral" element={<Referral />} />
+          <Route path="/coming-soon" element={<ComingSoon />} />
           
           {/* UI/UX Service Routes */}
           <Route path="/services/ui-ux/web-application" element={<UIUXWebApplication />} />
