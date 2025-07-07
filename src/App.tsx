@@ -38,7 +38,7 @@ import NextJSDevelopers from './pages/hire/NextJSDevelopers';
 import ReactNativeDevelopers from './pages/hire/ReactNativeDevelopers';
 import FlutterDevelopers from './pages/hire/FlutterDevelopers';
 import AndroidDevelopers from './pages/hire/AndroidDevelopers';
-import iOSDevelopers from './pages/hire/iOSDevelopers';
+import IOSDevelopers from './pages/hire/iOSDevelopers';
 import MobileDevelopers from './pages/hire/MobileDevelopers';
 import DjangoDevelopers from './pages/hire/DjangoDevelopers';
 import LaravelDevelopers from './pages/hire/LaravelDevelopers';
@@ -93,7 +93,7 @@ const AppContent = () => {
           <Route path="/hire/react-native-developers" element={<ReactNativeDevelopers />} />
           <Route path="/hire/flutter-developers" element={<FlutterDevelopers />} />
           <Route path="/hire/android-developers" element={<AndroidDevelopers />} />
-          <Route path="/hire/ios-developers" element={<iOSDevelopers />} />
+          <Route path="/hire/ios-developers" element={<IOSDevelopers />} />
           <Route path="/hire/mobile-developers" element={<MobileDevelopers />} />
           <Route path="/hire/django-developers" element={<DjangoDevelopers />} />
           <Route path="/hire/laravel-developers" element={<LaravelDevelopers />} />
